@@ -1,24 +1,20 @@
 import React from "react";
-import logo from '../logo.svg';
 
 class HeaderComponent extends React.Component{
     render(){
-        return (<header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <p>Hi Codemine 7 dggddffhffhh</p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>)
+        console.log(this.props);
+        return (
+        <header className="App-header">
+        <div style={{float:"left", display:"inline-flex"}}> 
+        <img src={this.props.propList.logo} className="App-logo" alt="logo" />
+       <p>{this.props.propList.display}</p></div>
+  <div className="header-right">
+    <a  href="#home">Home</a>
+    <a href="#contact">Contact</a>
+    <a href="#about">About</a>
+  </div>
+      </header>
+      )
     }
 }
 export default HeaderComponent;
