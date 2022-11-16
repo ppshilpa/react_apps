@@ -2,10 +2,10 @@ import abc from './logo.svg';
 import React from 'react';
 import './App.css'
 import HeaderComponent from './Component/HeaderComponent' ;
-import CardComponent from './Component/CardComponent'
+import {MainContainer} from './Component/MainContainer';
 export function App() {
 
-  const propObj={
+  const ssdf={
     display:"prop to show",
     text:"my prop displaying"
 
@@ -17,8 +17,9 @@ export function App() {
     display:"Shilpa Pawar",
     logo:abc
 
-  }}   propObj ={propObj}  simpleProp={3}  />
-<CardComponent />
+  }}   propObj ={ssdf}  simpleProp={3}  />
+
+<MainContainer simpleProp={3}  propObj ={ssdf}/>
     </div>
   );
 

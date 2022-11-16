@@ -1,8 +1,7 @@
 import React from "react";
 import Avatar from '../img_avatar2.png';
 
-class CardComponent extends React.Component{
-  render(){
+function CardComponent(props){
         return (
         <div className="card">
   <img src={Avatar} alt="Avatar" />
@@ -10,10 +9,12 @@ class CardComponent extends React.Component{
     <h4><b>Shilpa Pawar</b></h4>
     <p>MCA 2018 Passout</p>
     <p>Pune University</p>
+    <h1>{props.list.display}</h1>
   </div>
 </div>
       )
-        }
+
     
 }
+
 export default CardComponent;
