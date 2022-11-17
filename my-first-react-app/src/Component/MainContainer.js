@@ -1,5 +1,5 @@
 import React from 'react';
-import CardComponent from './CardComponent'
+import CardComponent from './UserComponent'
 import { FriendList } from './FriendList'
 
 export class MainContainer extends React.Component {

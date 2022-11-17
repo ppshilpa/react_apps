@@ -3,6 +3,7 @@ import React from 'react';
 import './App.css'
 import HeaderComponent from './Component/HeaderComponent' ;
 import {MainContainer} from './Component/MainContainer';
+import {ImnpureComponent,ImpureComponent} from './Component/ImpureComponent'
 export function App() {
 
   const ssdf={
@@ -18,8 +19,10 @@ export function App() {
     logo:abc
 
   }}   propObj ={ssdf}  simpleProp={3}  />
+ <ImnpureComponent  counter={2}/>
+{/* <ImpureComponent/>  */}
+{/* <MainContainer simpleProp={3}  propObj ={ssdf}/> */}
 
-<MainContainer simpleProp={3}  propObj ={ssdf}/>
     </div>
   );
 

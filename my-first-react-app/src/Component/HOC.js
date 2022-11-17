@@ -35,22 +35,32 @@ export class ImpureComponent extends React.Component {
     this.state = {
       counter: 0
     }
-    
+  } 
     // The value of Counter is updated to same value during continues interval
-    
-
-  }
-
-  componentWillMount() {
+    static getDerivedStateFromProps(props, state) {
+      console.log(props,'getDerivedStateFromProps', state);
+      if(props.counter !== state.counter)
+      return {counter:3};
+}
+componentDidMount() {
   setInterval(() => {
     this.setState({
-      counter: 0
+      counter: 1
     });
-   // console.log('interval----');
-
-  }, 1000);}
-
+  }, 10000);
+}
+shouldComponentUpdate(){
+  return true;
+}
+getSnapshotBeforeUpdate(props, state) {
+  console.log(props,'getSnapshotBeforeUpdate', state);
+  // document.getElementById("div1").innerHTML =
+  // "Before the update, the favorite was " + prevState.favoritecolor;
+}
+componentDidUpdate(props, state) {
+  console.log(props, 'componentDidUpdate',state);}
   render() {
+    console.log('interval----');
 
     return <b>Counter Value: {this.state.counter}</b>
   }
@@ -61,19 +71,19 @@ export class PureComponent extends React.PureComponent {
     this.state = {
       counter: 0
     }
-    
+  }
     // The value of Counter is updated to same value during continues interval
-    
+    componentDidMount() {
     setInterval(() => {
       this.setState({
-        counter: 0
+        counter: 1
       });
       //console.log('interval----');
     }, 1000);
   }
   
   render() {
-    console.log('interval render----');
+    console.log('interval render----p');
 
     // This function wont be re-rendered in case when the new state is same as previous
     
