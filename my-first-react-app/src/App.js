@@ -3,7 +3,9 @@ import React from 'react';
 import './App.css'
 import HeaderComponent from './Component/HeaderComponent' ;
 import {MainContainer} from './Component/MainContainer';
-import {ImnpureComponent,ImpureComponent} from './Component/ImpureComponent'
+import ProductsList  from './Component/list-card';
+ import products from './Component/products.json';
+import {ImnpureComponent,BoxCheck} from './Component/ImpureComponent'
 export function App() {
 
   const ssdf={
@@ -13,15 +15,17 @@ export function App() {
   }
   return (
     <div className="App">
-     <HeaderComponent  
+     {/* <HeaderComponent  
      propList={{
     display:"Shilpa Pawar",
     logo:abc
 
-  }}   propObj ={ssdf}  simpleProp={3}  />
- <ImnpureComponent  counter={2}/>
+  }}   propObj ={ssdf}  simpleProp={3}  /> */}
+ {/* <ImnpureComponent  counter={2}/>
+ <BoxCheck /> */}
 {/* <ImpureComponent/>  */}
-{/* <MainContainer simpleProp={3}  propObj ={ssdf}/> */}
+<ProductsList data={products}/>
+ <MainContainer simpleProp={3}  propObj ={ssdf}/>
 
     </div>
   );

@@ -1,8 +1,13 @@
 import React from 'react';
 
 export class FriendList extends React.Component{
+
+    componentWillUnmount(){
+        console.log("call before unmouting");
+    }
 render(){
-    return(<></>)
+    console.log("friendlist render");
+    return(<h1>Showing FriendList</h1>)
 }
 
 }

@@ -8,8 +8,10 @@ export class MainContainer extends React.Component {
         this.state = {
             myStatus: 'maried',
             Gender: 'F',
-            Age: '34'
+            Age: '34',
+            showFriendList:true
         };
+
 
     }
 
@@ -21,7 +23,13 @@ export class MainContainer extends React.Component {
             myStatus: status
         });
     }
+    componentWillUnmount(){
+        console.log("call before unmouting");
+    }
+ hideFriendList = ()=>{
 
+    this.setState({showFriendList:!this.state.showFriendList});
+ }
     render() {
         const friend = {
             name: "Dhanaji Mardhekar",
@@ -33,12 +41,13 @@ export class MainContainer extends React.Component {
                 <button onClick={this.updateAge.bind(this, 20, 'unmarried')}>Click Me</button>
                 <div>My Age : {this.state.Age}</div>
                 <h1>Show my prop {this.props.propObj.display}</h1>
-                <CardComponent list={{
+                <button onClick={this.hideFriendList}>Toggle FriendList </button>
+                {/* <CardComponent list={{
                     display: "prop to show",
                     text: "my prop displaying"
 
-                }} />
-                <FriendList friendList={friend} />
+                }} /> */}
+              {this.state.showFriendList && <FriendList  />}
             </>
         )
     }
