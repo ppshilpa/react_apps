@@ -14,12 +14,11 @@ render (){
                     <form className="row g-3 needs-validation" >
                     <div className="form-group">
 <label >Email</label>
-<input type="email" className="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email"/>
-<small id="emailHelp" className="form-text text-muted">We'll never share your email with anyone else.</small>
+<input type="email" className="form-control" placeholder="Enter email"/>
 </div>    
 <div className="form-group">
 <label >Password</label>
-<input type="password" className="form-control" id="inputPassword" placeholder="Password"/>
+<input type="password" className="form-control" placeholder="Password"/>
 </div>    
                         <div className="form-group">
                             <select className="form-select" defaultValue={3} >

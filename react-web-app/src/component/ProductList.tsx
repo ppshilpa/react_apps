@@ -20,7 +20,7 @@ export type product = {
   
      return (<>
      <div className='row'>
-      { products.map((product)=>(<ProductCard {...product} />)) }
+      { products.map((product)=>(<ProductCard {...product} key={product.sku} />)) }
 </div>  
      </>
      )
