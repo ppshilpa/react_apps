@@ -1,15 +1,18 @@
 import React from 'react';
-import logo from './logo.svg';
 import './App.css';
-import ProductList from "./component/ProductList";
-import products from "./data/products.json";
 import {NavComponent} from "./component/NavComponent";
+import WebRoute from './WebRoute';
 
 const App =() =>{
   return (
-    <div  className="container-fluid">
+    <div className="container-fluid">
       <NavComponent/>
-      <ProductList data={products} cardName={"test name"} />
+    <div className='row'>
+      <div className='col-2'>dfgddd</div>
+      <div className='col'><WebRoute/></div>
+
+    </div>
+      
     </div>
   );
 }

@@ -1,7 +1,9 @@
+import { Component } from "react";
 
-export const CartModel = () => {
+export class CartModel extends Component<any, {sizes:string[],idValue:string}> {
+render (){
     return (
-        <div className="modal" id="CartModal" >
+        <div className="modal" id={"id-"+this.props.idValue} >
             <div className="modal-dialog">
                 <div className="modal-content">
                     <div className="modal-header">
@@ -10,8 +12,17 @@ export const CartModel = () => {
                     </div>
                     <div className="modal-body">
                     <form className="row g-3 needs-validation" >
+                    <div className="form-group">
+<label >Email</label>
+<input type="email" className="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email"/>
+<small id="emailHelp" className="form-text text-muted">We'll never share your email with anyone else.</small>
+</div>    
+<div className="form-group">
+<label >Password</label>
+<input type="password" className="form-control" id="inputPassword" placeholder="Password"/>
+</div>    
                         <div className="form-group">
-                            <select className="form-select" >
+                            <select className="form-select" defaultValue={3} >
                                 <option >Select Quantity</option>
                                 <option value="1">One</option>
                                 <option value="2">Two</option>
@@ -22,18 +33,10 @@ export const CartModel = () => {
                         </div>
                         <div className="form-group">
                             <label>Select Size</label><br />
-                            <div className="form-check form-check-inline">
-                                <input className="form-check-input" type="radio" name="size" value="option1" />
-                                <label className="form-check-label" >S</label>
-                            </div>
-                            <div className="form-check form-check-inline">
-                                <input className="form-check-input" type="radio" name="size" value="option2" />
-                                <label className="form-check-label" >M</label>
-                            </div>
-                            <div className="form-check form-check-inline">
-                                <input className="form-check-input" type="radio" name="size" value="option3" />
-                                <label className="form-check-label" >XL </label>
-                            </div>
+                            { this.props.sizes.map((size:string)=>(<div className="form-check form-check-inline" key={size}>
+                                <input className="form-check-input" type="radio" name="size" value={size} />
+                                <label className="form-check-label" >{size}</label>
+                            </div>)) }
                         </div>
                     </form>
                 </div>
@@ -44,4 +47,5 @@ export const CartModel = () => {
             </div>
         </div>
         </div >)
+}
 }

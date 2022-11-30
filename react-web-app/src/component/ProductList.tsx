@@ -1,40 +1,28 @@
+import React from 'react';
+import { UrlWithStringQuery } from 'url';
 import {ProductCard} from './ProductCard';
+import products from "../data/products.json";
 
-export interface product {
+export type product = {
     availableSizes: string[];
     currencyFormat: string;
     currencyId: string;
     description: string;
     id: number;
-    installments?: number;
+    installments: number;
     isFreeShipping: boolean;
-    price: number | string;
+    price: number;
     sku: number;
     style: string;
-    title: string
+    title: string;
   };
- 
-type propsList ={
-data :product[];
-cardName?: string;
-};
-
-   const ProductsList = (props:propsList) => {
-   // const products = props.data || []
-    const {data:productList, cardName} = props;
-    let index=0;
-    return (
-      <div>
-        <div>
-          <div>
-            <h2>{cardName}</h2>
-          </div>
-        </div>
-         <div className="row">
-          {productList.map((product) => <div className='col-3' key={product.sku}  >
-            <ProductCard  {...product} /></div>)}
-        </div> 
-      </div>
-    )
-  }
-  export default ProductsList;
+  const ProductList =() =>{
+  
+     return (<>
+     <div className='row'>
+      { products.map((product)=>(<ProductCard {...product} />)) }
+</div>  
+     </>
+     )
+}
+export default ProductList;
