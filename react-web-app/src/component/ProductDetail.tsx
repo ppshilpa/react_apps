@@ -1,12 +1,13 @@
 import { Link, useParams } from 'react-router-dom';
 import products from '../data/products.json';
-import {product as productType } from './ProductList';
+import { product as productType } from './ProductList';
 import { ProductCard } from './ProductCard';
-
 const ProductDetail = () => {
-    const param = useParams();
-
-   const product:productType|object = products.find(x => x.sku ===parseInt(param.sku ||'')) ||{};
-    return <div className='row'><ProductCard {...product} /></div>;
+    const { sku, name } = useParams();
+    let product: productType | undefined;
+    if (sku) {
+        product = products.find(x => x.sku === parseInt(sku));
+    }
+    return product! && <div className='row'><ProductCard {...product} /></div>;
 }
 export default ProductDetail;

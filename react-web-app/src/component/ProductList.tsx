@@ -16,6 +16,7 @@ export type product = {
     style: string;
     title: string;
   };
+  
   const ProductList =() =>{
   
      return (<>

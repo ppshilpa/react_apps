@@ -7,7 +7,7 @@ interface AppState {
     isModelOpen: boolean
  }
 
-export class ProductCard extends React.Component<any,AppState>{
+export class ProductCard extends React.Component<product,AppState>{
     
 constructor(props:product){
 super(props);
