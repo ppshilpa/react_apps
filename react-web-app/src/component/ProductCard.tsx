@@ -15,6 +15,7 @@ this.state =({
     isModelOpen :false
 
 });
+console.log(this.props);
 }
  showModel = () => {
 this.setState({
@@ -26,7 +27,7 @@ console.log(this.props.availableSizes,"===",this.state.isModelOpen)
 render(): ReactNode {
     return (
         <div className='col-3'>
-            <Link to={`/product-details/${this.props.sku}/${this.props.title}`} className='nav-link'>
+            <Link to={`/product-details/${this.props.sku}`} className='nav-link'>
  <div className="card mb-2">
   <div className="card-header">
   {this.props.title}
