@@ -4,6 +4,7 @@ import PageNotFound from './component/PageNotFound';
 import ProductDetail from './component/ProductDetail';
 import ProductList from './component/ProductList';
 import TopicWrap from './component/Topic';
+import UserProfile from './component/UserProfile';
 
  const WebRoute = () =>{
 return <Routes>
@@ -13,6 +14,8 @@ return <Routes>
 <Route path="/product-details/:sku/:name/:price" element={<ProductDetail/>} />
 <Route path="/product-details/:sku/:name" element={<ProductDetail/>} />
 <Route path="/product-details/:sku" element={<ProductDetail/>} />
+<Route path="/user/:login" element={<UserProfile/>} />
+
 <Route path="/page-not-found" element={<PageNotFound/>} />
 <Route path="*" element={<Navigate to="/page-not-found" />} />
 </Routes>

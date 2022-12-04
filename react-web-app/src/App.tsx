@@ -9,11 +9,8 @@ const App =() =>{
   return (
     <Container fluid>
       <NavComponent/>
-    <Row>
-      <Col md={3} lg={4} className="p-1">dfgddd</Col>
-      <Col><WebRoute/></Col>
+   <WebRoute/>
 
-    </Row>
       
     </Container>
   );
