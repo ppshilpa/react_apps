@@ -1,6 +1,6 @@
 import React from 'react';
 import { UrlWithStringQuery } from 'url';
-import {ProductCard} from './ProductCard';
+import ProductCard from './ProductCard';
 import products from "../data/products.json";
 
 export type product = {

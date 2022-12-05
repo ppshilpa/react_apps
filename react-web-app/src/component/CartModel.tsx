@@ -1,17 +1,20 @@
 import { Component } from "react";
-
-export class CartModel extends Component<any, {sizes:string[],idValue:string}> {
-render (){
+import { Modal, Button } from "react-bootstrap";
+type propList ={
+    sizes:string[];
+    showModel: boolean;
+    handleClose: ()=>void;
+}
+export const CartModel=(props:propList)=> {
+console.log(props);
     return (
-        <div className="modal" id={"id-"+this.props.idValue} >
-            <div className="modal-dialog">
-                <div className="modal-content">
-                    <div className="modal-header">
-                        <h5 className="modal-title">Add to Cart</h5>
-                        <button type="button" className="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                    </div>
-                    <div className="modal-body">
-                    <form className="row g-3 needs-validation" >
+        <>
+       <Modal show={props.showModel} onHide={props.handleClose}>
+        <Modal.Header closeButton>
+          <Modal.Title>Add to Cart</Modal.Title>
+        </Modal.Header>
+        <Modal.Body>
+        <form className="row g-3 needs-validation" >
                     <div className="form-group">
 <label >Email</label>
 <input type="email" className="form-control" placeholder="Enter email"/>
@@ -32,19 +35,23 @@ render (){
                         </div>
                         <div className="form-group">
                             <label>Select Size</label><br />
-                            { this.props.sizes.map((size:string)=>(<div className="form-check form-check-inline" key={size}>
+                            { props.sizes.map((size:string)=>(<div className="form-check form-check-inline" key={size}>
                                 <input className="form-check-input" type="radio" name="size" value={size} />
                                 <label className="form-check-label" >{size}</label>
                             </div>)) }
                         </div>
                     </form>
-                </div>
-                <div className="modal-footer">
-                    <button type="button" className="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                    <button type="button" className="btn btn-primary">Checkout</button>
-                </div>
-            </div>
-        </div>
-        </div >)
-}
+        </Modal.Body>
+        <Modal.Footer>
+          <Button variant="secondary" onClick={props.handleClose}>
+            Close
+          </Button>
+          <Button variant="primary" onClick={props.handleClose}>
+          Checkout
+          </Button>
+        </Modal.Footer>
+      </Modal>
+
+        </>)
+
 }
