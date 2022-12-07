@@ -1,18 +1,20 @@
-import React,{ ReactNode, useState } from 'react';
+import React,{ ReactNode, useContext, useState } from 'react';
 import {product} from './ProductList';
 import {CartModel} from './CartModel'
 import { Link } from 'react-router-dom';
 import { Card, ListGroup,Col, Button, Modal } from 'react-bootstrap';
+import { UserContext } from '../App';
 
 
 const ProductCard = (product:product)=>{
-const [showModel, setShowModel] = useState(false);
+  const user = useContext(UserContext);
+  const [showModel, setShowModel] = useState(false);
 const handleClose = () => setShowModel(false);
 const handleShow = () => setShowModel(true);
     return  <Col md={3}>
-         <Link to={`/product-details/${product.sku}`} className='nav-link'>
+       
             <Card >
-    <Card.Header>{product.title}</Card.Header>
+    <Card.Header>{product.title} =={user.name}</Card.Header>
     <ListGroup variant="flush">
     <ListGroup.Item
         as="li"
@@ -37,8 +39,10 @@ const handleShow = () => setShowModel(true);
         </div>
       </ListGroup.Item>
     </ListGroup>
-    <Card.Footer><Button onClick={handleShow}> Open Model</Button></Card.Footer>
-  </Card></Link>
+    <Card.Footer><Button onClick={handleShow}> Open Model</Button>
+    <Link to={`/product-details/${product.sku}`} className='nav-link'><Button > Open Details</Button></Link>
+    </Card.Footer>
+  </Card> 
 
   <CartModel sizes={product.availableSizes} showModel={showModel} handleClose={handleClose}/>
   </Col>;
