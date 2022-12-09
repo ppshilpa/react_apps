@@ -22,7 +22,7 @@ exampleRef.current = "Hello World";
 console.log(exampleRef.current);
 
 return <div ref={divElement}>
-    <input type="text" name="firstName" ref={inputElement} value={exampleRef.current}/>
+    <input type="text" name="firstName" ref={inputElement} defaultValue={exampleRef.current}/>
     <Button  onClick={focusInput} >Check </Button>
     <ListGroup>
       <ListGroup.Item>Cras justo odio</ListGroup.Item>
