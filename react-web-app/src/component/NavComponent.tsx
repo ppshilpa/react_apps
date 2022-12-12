@@ -1,10 +1,16 @@
 import React from "react";
 import logo from '../logo.svg';
-import { Link} from 'react-router-dom';
+import { Link, useNavigate} from 'react-router-dom';
 import WebRoute from "../WebRoute";
+import { Button } from "react-bootstrap";
 
-export class NavComponent extends React.Component{
-render(): React.ReactNode {
+export const NavComponent=()=>{
+  const navigate = useNavigate();
+
+  const logOut = ()=>{
+    sessionStorage.removeItem('auth');
+    navigate('/login');
+  }
 return (<header>
 
 <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
@@ -34,10 +40,11 @@ return (<header>
         <input className="form-control me-2" type="search" placeholder="Search" aria-label="Search"/>
         <button className="btn btn-outline-success" type="submit">Search</button>
       </form>
+      <Button variant="dark" onClick={logOut}>Logout</Button>
     </div>
   </div>
 </nav>
 </header>)
     
-}
+
 }

@@ -1,5 +1,6 @@
 import { Routes, Route, Navigate } from 'react-router-dom';
 import Homepage from './component/HomePage';
+import LoginForm from './component/LoginForm';
 import PageNotFound from './component/PageNotFound';
 import ProductDetail from './component/ProductDetail';
 import ProductList from './component/ProductList';
@@ -15,9 +16,10 @@ return <Routes>
 <Route path="/product-details/:sku/:name" element={<ProductDetail/>} />
 <Route path="/product-details/:sku" element={<ProductDetail/>} />
 <Route path="/user/:login" element={<UserProfile/>} />
-
 <Route path="/page-not-found" element={<PageNotFound/>} />
 <Route path="*" element={<Navigate to="/page-not-found" />} />
+<Route path="/login" element={<LoginForm/>} />
+
 </Routes>
  }
  export default WebRoute;
