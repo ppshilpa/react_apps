@@ -27,7 +27,9 @@ const form = event.currentTarget;
       }
 
   return (
-    <Card style={{ width: '25rem' }} className='m-auto'>
+    <div className="d-flex align-items-center justify-content-center vh-100">
+    <Card  border="warning" className='p-5' >
+    <Card.Title>Login Form</Card.Title>
     <Card.Body>
         <Form noValidate validated={false} onSubmit={handleSubmit}>
       <Form.Group className="mb-3" controlId="formBasicEmail">
@@ -60,6 +62,7 @@ const form = event.currentTarget;
       </Button>
     </Form>
     </Card.Body></Card>
+    </div>
   );
 }
 
