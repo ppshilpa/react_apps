@@ -9,7 +9,7 @@ export const NavComponent=()=>{
 
   const logOut = ()=>{
     sessionStorage.removeItem('auth');
-    navigate('/login');
+    navigate('/signin');
   }
 return (<header>
 
