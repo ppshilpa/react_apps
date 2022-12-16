@@ -1,27 +1,43 @@
-import React from 'react';
-import logo from './logo.svg';
+import React ,{useState,useEffect} from 'react';
 import './App.css';
 import { Container } from 'react-bootstrap';
+import {NavComponent } from './component/NavComponent';
+import WebRoute from './WebRoute';
+import { Navigate, useLocation, useNavigate } from 'react-router-dom';
+const AuthorizationContext  = React.createContext('');
 
-function App() {
+const App= () =>{
+  const  location  = useLocation();
+  const from = location ? location?.pathname : '/';
+
+  const navigate = useNavigate();
+  const authenticated = localStorage.getItem('token')||'';
+
+useEffect (()=>{
+ return authenticated?  navigate(from, { replace: true }): navigate('/login',{ replace: true });
+},[])
+  // const PublicRoute = () => {
+  //   if (authenticated) {
+  //     return <Navigate to="/" replace={true} state={{ from: location }} />;
+  //   }
+  // };
+  
+  // const PrivateRoute = () => {
+  //   if (!authenticated) {
+  //     return (
+  //       <Navigate to="/login" replace={true} state={{ from: location }} />
+  //     );
+  //   }
+  //   };
   return (
-    <Container className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <Container fluid>
+      <AuthorizationContext.Provider value={authenticated}>
+    <><NavComponent/><WebRoute />
+    </>
+    </AuthorizationContext.Provider>
     </Container>
   );
+   
 }
 
 export default App;
