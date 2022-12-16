@@ -39,7 +39,7 @@ const callSubmitApi = ()=>{
         }
         }).catch(error =>{ 
             console.log(error);
-            error &&  setLoginResponse({'error':'Opps something wrong...'})});
+         setLoginResponse({'error':'Opps something wrong...'})});
 }
 
 

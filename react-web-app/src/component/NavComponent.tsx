@@ -33,6 +33,9 @@ return (<header>
         <Link to="/product-list" className="nav-link">Products</Link> 
         </li>
         <li className="nav-item">
+        <Link to="/user-list" className="nav-link">Users</Link> 
+        </li>
+        <li className="nav-item">
           <a className="nav-link disabled" href="#"  aria-disabled="true">Disabled</a>
         </li>
       </ul>

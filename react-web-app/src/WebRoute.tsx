@@ -6,7 +6,9 @@ import Posts from './component/Posts';
 import ProductDetail from './component/ProductDetail';
 import ProductList from './component/ProductList';
 import TopicWrap from './component/Topic';
+import { UserList } from './component/UserList';
 import UserProfile from './component/UserProfile';
+import { UserDetails } from './component/UserDetails';
 
  const WebRoute = () =>{
 return <Routes>
@@ -21,6 +23,10 @@ return <Routes>
 <Route path="/page-not-found" element={<PageNotFound/>} />
 <Route path="*" element={<Navigate to="/page-not-found" />} />
 <Route path="/signin" element={<LoginForm/>} />
+<Route path="/user-list" element={<UserList/>} />
+<Route path="/user-detail/:id" element={<UserDetails/>} />
+
+
 
 </Routes>
  }
