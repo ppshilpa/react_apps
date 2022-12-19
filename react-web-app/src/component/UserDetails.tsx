@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react"
+import { Row, Col } from "react-bootstrap"
 import { useParams } from "react-router-dom"
 import { userType } from "./UserList"
 
@@ -14,11 +15,17 @@ export const UserDetails =()=>{
     const [user, setUser]= useState<userApiSuccess>();
 
     useEffect(()=>{
-        fetch(`https://reqres.in/api/users111/${id}`)
+        fetch(`https://reqres.in/api/users/${id}`)
         .then(response=>response.json())
         .then(result=> setUser(result))
+        .catch(error=>console.log(error))
     },[id])
 
-return <>      <img src={user?.data.avatar} />
-{user?.data.first_name}== {user?.data.last_name}</>;
+return <Row><Col md={3}> <img src={user?.data.avatar} /></Col>
+<Col><ul>
+    <li><b>Name</b>: {user?.data.first_name} {user?.data.last_name}</li>
+    <li><b>Email</b>: {user?.data.email} </li>
+
+</ul>
+</Col></Row>;
 }
