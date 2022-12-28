@@ -20,6 +20,7 @@ root.render(
   </React.StrictMode>
 );
 export type RootState = ReturnType<typeof store.getState>;
+export type AppDispatch = typeof store.dispatch | any;
 
 // If you want to start measuring performance in your app, pass a function
 // to log results (for example: reportWebVitals(console.log))

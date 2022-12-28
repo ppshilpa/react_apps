@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react"
 import { Row, Col } from "react-bootstrap"
 import { useParams } from "react-router-dom"
-import { userType } from "./UserList"
+import { userType } from "../reducers/userReducer"
 
 interface userApiSuccess {
     data: userType,

@@ -4,13 +4,14 @@ import logo from '../logo.png';
 import { Link} from 'react-router-dom';
 export const NavComponent = ()=>{
     return   (<Navbar bg="dark" variant="dark">
- <Navbar.Brand href="#home">
+ <Navbar.Brand href="/">
             <img
               src={logo}
               height="40"
               className="d-inline-block align-top"
               alt="React Bootstrap logo"
-            />
+            />        
+
           </Navbar.Brand>
         <Nav className="me-auto">
         <Nav.Link href="#home">Home</Nav.Link>

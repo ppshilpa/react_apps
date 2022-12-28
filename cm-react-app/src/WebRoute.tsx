@@ -3,8 +3,8 @@ import PageNotFound from './component/PageNotFound';
 import {UserForm} from './component/UserForm';
 import LoginForm  from './component/LoginForm'
 import Homepage from './component/HomePage';
-// import ContentComp from './Users/Users';
-// import {UserList} from './component/UserList';
+//  import ContentComp from './Users/Users';
+ import {UserList} from './component/UserList';
 import { Counter } from './component/Counter';
 
 
@@ -13,8 +13,8 @@ return <Routes>
 <Route path="/user-form" element={<UserForm/>} />
 <Route path="/" element={<Homepage/>} />
 <Route path="/login" element={<LoginForm/>} />
-{/* <Route path="/content" element={<ContentComp/>} />
-<Route path="/users" element={<UserList/>} /> */}
+{/* <Route path="/content" element={<ContentComp/>} /> */}
+<Route path="/users" element={<UserList/>} /> 
 <Route path="/counter" element={<Counter/>} />
 
 <Route path="*" element={<Navigate to="/page-not-found" />} />

@@ -1,4 +1,3 @@
-import { AnyAction } from "redux";
 import { INCREMENT, DECREMENT, RESET,SET_COUNTER_TITLE} from "../actions/actionTypes";
 
 export interface counterType{
@@ -7,8 +6,8 @@ export interface counterType{
 }
 
 const initialState ={
-    counter:0,
-    counterTitle:'Shilpa'
+    counter:10,
+    counterTitle:' Alexa'
    
 }
 
