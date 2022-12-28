@@ -16,6 +16,10 @@ export const NavComponent = ()=>{
         <Nav className="me-auto">
         <Nav.Link href="#home">Home</Nav.Link>
         <Link to="/user-form" className="nav-link">User Form</Link>
+        <Link to="/users" className="nav-link">Users</Link>
+
+        <Link to="/posts" className="nav-link">All Posts</Link>
+
         <Nav.Link href="#pricing">Pricing</Nav.Link>
       </Nav>
             <Navbar.Offcanvas

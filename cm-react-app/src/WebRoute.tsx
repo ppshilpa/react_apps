@@ -6,7 +6,7 @@ import Homepage from './component/HomePage';
 //  import ContentComp from './Users/Users';
  import {UserList} from './component/UserList';
 import { Counter } from './component/Counter';
-
+import  Posts from './component/Posts'
 
  const WebRoute = () =>{
 return <Routes>
@@ -16,6 +16,7 @@ return <Routes>
 {/* <Route path="/content" element={<ContentComp/>} /> */}
 <Route path="/users" element={<UserList/>} /> 
 <Route path="/counter" element={<Counter/>} />
+<Route path="/posts" element={<Posts/>} />
 
 <Route path="*" element={<Navigate to="/page-not-found" />} />
 <Route path="/page-not-found" element={<PageNotFound/>} />
