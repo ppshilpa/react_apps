@@ -1,5 +1,9 @@
 import React, { useState, useEffect } from 'react';
-import { Alert, Button, Card, Col, Form, Modal, Row } from 'react-bootstrap';
+import { Alert, Button, Card, Col, Form, Modal, Row, Spinner } from 'react-bootstrap';
+import { useDispatch, useSelector } from 'react-redux';
+import { AppDispatch, RootState } from "..";
+import { getPostList,addUpdatePost } from '../actions/postAsyncActions';
+import { postApiRes,postAUApiRes } from '../reducers/postReducer';
 interface postType {
     userId?: number,
     id: number,
@@ -7,34 +11,35 @@ interface postType {
     body: string
 
 };
+
 const Posts = () => {
-    const [posts, setPosts] = useState<postType[]>([]);
 
     const [formData, setFormData] =useState({title:'',body:''});
-    const [postSuccess, setPostSuccess]=useState<postType>();
-    const [addError,setPostError]=useState('');
+   // const [postSuccess, setPostSuccess]=useState<postType>();
+   // const [addError,setPostError]=useState('');
 const [isUpdate, setIsUpdate]= useState(false);
     const [show, setShow] = useState(false);
 
     const handleClose = () => setShow(false);
     const handleShow = () => setShow(true);
-useEffect(()=>{
-    show && setPostSuccess(undefined);
-},[show])
 
+
+
+const {data:posts,loading: fetchLoader,error } = useSelector<RootState, postApiRes>(state=>state.posts);
+
+const {data:postSuccess,loading: addUpdateLoader,error:addUpdateError } = useSelector<RootState, postAUApiRes>(state=>state.post);
+
+const dispach  = useDispatch<AppDispatch>();
+
+
+useEffect(()=>{
+    dispach(getPostList());
+    console.log(posts);
+
+},[dispach]);
 
 // GET with fetch API
-useEffect(() => {
-    const fetchPost = async () => {
-       const response = await fetch(
-          'https://jsonplaceholder.typicode.com/posts'
-       );
-       const data = await response.json();
-       console.log(data);
-       setPosts(data);
-    };
-    fetchPost();
- }, []);
+
 
  // Delete with fetchAPI
  const deletePost = async (id:number) => {
@@ -45,61 +50,28 @@ useEffect(() => {
        }
     );
     if (response.status === 200) {
-       setPosts(
-          posts.filter((post) => {
-             return post.id !== id;
-          })
-       );
+    //    setPosts(
+    //       posts.filter((post) => {
+    //          return post.id !== id;
+    //       })
+    //    );
     } else {
        return;
     }
  };
 
- // Post with fetchAPI
- const addPosts = async (formObj:{title: string, body: string, id?:number},method:string) => {
-console.log(formObj);
-const apiUrl = method==='PUT'? `https://jsonplaceholder.typicode.com/posts/${formObj.id}`:'https://jsonplaceholder.typicode.com/posts';
-    let response = await fetch(apiUrl, {
-       method: method,
-       body: JSON.stringify({
-          title: formObj.title,
-          body: formObj.body
-       }),
-       headers: {
-          'Content-type': 'application/json; charset=UTF-8',
-       },
-    });
-    let data = await response.json();
-    console.log(response);
-    if(response.ok)
-    setPostSuccess(data);
-    else setPostError('User not added yet try after sometime.....')
-    setFormData({title:'',body:''})
- };
- const addPostsWithoutAsync =  (formObj:{title: string, body: string},method:string) => {
-    fetch('https://jsonplaceholder.typicode.com/posts', {
-       method: method,
-       body: JSON.stringify({
-          title: formObj.title,
-          body: formObj.body
-       }),
-       headers: {
-          'Content-type': 'application/json; charset=UTF-8',
-       },
-    }).then(response=> response.json())
-    .then(result=>{
-        console.log(result);
-        setPostSuccess(result);
-        setFormData({title:'',body:''});
-    }).catch(error=> console.log(error)) ;
- };
+ 
+
 
  const handleSubmit = (e: { preventDefault: () => void; }) => {
     e.preventDefault();
          if(isUpdate)
-    addPosts(formData, 'PUT');
-    else  addPosts(formData, 'POST');
+   dispach( addUpdatePost(formData, 'PUT'));
+    else dispach( addUpdatePost(formData, 'POST'));
    setIsUpdate(false);
+   setFormData({title:'',body:''})
+
+   console.log(postSuccess)
  };
 
  const updatePost =(post:postType)=>{
@@ -111,10 +83,13 @@ handleShow();
 
     return (
         <>
-            <Button variant="primary" onClick={handleShow}>
+         {fetchLoader ? <Spinner animation="border" role="status">
+      <span className="visually-hidden">Loading...</span>
+    </Spinner>:
+           <> <Button variant="primary" onClick={handleShow}>
                 Add more Post ++
             </Button>
-            {addError ? <Alert variant='danger'>{addError}</Alert> :
+            {addUpdateError ? <Alert variant='danger'>{addUpdateError }</Alert> :
            postSuccess?.title && <Alert><ul><li>{postSuccess?.title}</li><li>{postSuccess?.body}</li></ul></Alert>}
             <Modal show={show} onHide={handleClose}>
                 <Form noValidate onSubmit={handleSubmit}>
@@ -152,7 +127,7 @@ handleShow();
                 </Form>
             </Modal>
             <Row>
-                {posts.map((post) => {
+                {posts?.map((post) => {
                     return (
                         <Col md={3} className="p-2" key={post.id}>
                             <Card key={post.id}>
@@ -167,7 +142,8 @@ handleShow();
                         </Col>
                     );
                 })}
-            </Row></>
+            </Row></>}
+            </>
 
     );
 };
